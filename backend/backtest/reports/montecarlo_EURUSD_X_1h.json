@@ -1,0 +1,15 @@
+{
+  "pair": "EURUSD=X",
+  "timeframe": "1h",
+  "n_trades": 95,
+  "n_sims": 2000,
+  "risk_per_trade": 0.01,
+  "starting_equity": 10000.0,
+  "median_terminal_equity": 9684.67,
+  "p05_terminal_equity": 7933.01,
+  "p95_terminal_equity": 11823.11,
+  "median_max_drawdown_pct": 12.9,
+  "p95_max_drawdown_pct": 23.8,
+  "ruin_rate_pct": 0.0,
+  "mean_trade_r": -0.026
+}

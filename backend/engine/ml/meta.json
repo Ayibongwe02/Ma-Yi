@@ -1,0 +1,192 @@
+{
+  "feature_version": 2,
+  "n_train": 1042,
+  "n_pos": 540,
+  "n_neg": 502,
+  "last_fit": "2026-09-11T16:00:43.852773+00:00",
+  "train_accuracy": 0.75,
+  "feature_importance": {
+    "abs_score": 0.1689,
+    "raw_score": 0.2622,
+    "direction": 0.0064,
+    "trend": 0.0169,
+    "sr_score": 0.2272,
+    "vol_spike": 0.0062,
+    "vol_quiet": 0.0,
+    "vol_normal": 0.015,
+    "rr": 0.0,
+    "hour": 0.1115,
+    "day_of_week": 0.1075,
+    "is_major": 0.0147,
+    "sentiment_score": 0.0,
+    "regime_with_trend": 0.0073,
+    "regime_counter_early": 0.0,
+    "regime_counter_ignored": 0.0061,
+    "regime_no_trend": 0.0124,
+    "pattern_id": 0.0377
+  },
+  "pattern_hit_rates": {
+    "doji": {
+      "n": 35,
+      "wins": 8,
+      "win_rate": 22.9
+    },
+    "tweezer": {
+      "n": 324,
+      "wins": 140,
+      "win_rate": 43.2
+    },
+    "engulfing": {
+      "n": 230,
+      "wins": 114,
+      "win_rate": 49.6
+    },
+    "three_soldiers_crows": {
+      "n": 205,
+      "wins": 137,
+      "win_rate": 66.8
+    },
+    "inside_bar": {
+      "n": 2,
+      "wins": 2,
+      "win_rate": 100.0
+    },
+    "tweezer_top": {
+      "n": 3,
+      "wins": 3,
+      "win_rate": 100.0
+    },
+    "pin_bar_bull": {
+      "n": 3,
+      "wins": 3,
+      "win_rate": 100.0
+    },
+    "engulfing_bull": {
+      "n": 4,
+      "wins": 1,
+      "win_rate": 25.0
+    },
+    "star": {
+      "n": 44,
+      "wins": 19,
+      "win_rate": 43.2
+    },
+    "engulfing_bear": {
+      "n": 2,
+      "wins": 0,
+      "win_rate": 0.0
+    },
+    "tweezer_bottom": {
+      "n": 4,
+      "wins": 4,
+      "win_rate": 100.0
+    },
+    "pin_bar_bear": {
+      "n": 2,
+      "wins": 1,
+      "win_rate": 50.0
+    },
+    "hammer": {
+      "n": 13,
+      "wins": 6,
+      "win_rate": 46.2
+    },
+    "shooting_star": {
+      "n": 17,
+      "wins": 9,
+      "win_rate": 52.9
+    },
+    "marubozu": {
+      "n": 154,
+      "wins": 93,
+      "win_rate": 60.4
+    }
+  },
+  "regime_hit_rates": {
+    "with_long_trend": {
+      "n": 810,
+      "wins": 422,
+      "win_rate": 52.1
+    },
+    "no_long_trend": {
+      "n": 145,
+      "wins": 77,
+      "win_rate": 53.1
+    },
+    "unknown": {
+      "n": 20,
+      "wins": 14,
+      "win_rate": 70.0
+    },
+    "counter_trend_ignored": {
+      "n": 67,
+      "wins": 27,
+      "win_rate": 40.3
+    }
+  },
+  "walk_forward": {
+    "available": true,
+    "n_folds": 4,
+    "n_tested": 832,
+    "accuracy": 0.528,
+    "brier_score": 0.276,
+    "auc": 0.546,
+    "folds": [
+      {
+        "fold": 1,
+        "n_train": 210,
+        "n_test": 208,
+        "accuracy": 0.553
+      },
+      {
+        "fold": 2,
+        "n_train": 418,
+        "n_test": 208,
+        "accuracy": 0.524
+      },
+      {
+        "fold": 3,
+        "n_train": 626,
+        "n_test": 208,
+        "accuracy": 0.49
+      },
+      {
+        "fold": 4,
+        "n_train": 834,
+        "n_test": 208,
+        "accuracy": 0.543
+      }
+    ]
+  },
+  "health_state": "overfitting",
+  "health_detail": {
+    "state": "overfitting",
+    "previous_state": "insufficient_data",
+    "action": "pause_and_regularize",
+    "recommendation": "Train accuracy (75%) is 22% higher than walk-forward (53%). Pausing auto-retrain and switching to stronger regularisation until more diverse out-of-sample data arrives.",
+    "reasons": [
+      "overfit_gap=0.222"
+    ],
+    "metrics": {
+      "labeled": 1042,
+      "train_accuracy": 0.75,
+      "walk_forward_accuracy": 0.528,
+      "gap": 0.222,
+      "diverse_patterns": 15,
+      "hours_since_fit": 0.0,
+      "n_wins": 540,
+      "n_losses": 502
+    },
+    "controls": {
+      "learning_paused": true,
+      "explore_mode": true,
+      "hyper_mode": "regularized"
+    },
+    "evaluated_at": "2026-09-11T16:00:43.863827+00:00"
+  },
+  "learning_paused": true,
+  "explore_mode": true,
+  "hyper_mode": "regularized",
+  "n_at_last_fit": 1042,
+  "last_auto_fit": "2026-09-11T16:00:44.689459+00:00"
+}

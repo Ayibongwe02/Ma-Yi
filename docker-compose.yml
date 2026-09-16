@@ -1,0 +1,57 @@
+# Ma-yi Sentinel — premium local / self-hosted stack
+# One service: API + engines + ML + React desk on :8000
+#
+#   docker compose up --build
+#   open http://localhost:8000
+
+services:
+  mayi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: mayi-sentinel:latest
+    container_name: mayi-sentinel
+    ports:
+      - "${PORT:-8000}:8000"
+    environment:
+      PORT: "8000"
+      DATA_SOURCE: ${DATA_SOURCE:-yfinance}
+      RUNNER_MODE: ${RUNNER_MODE:-replay}
+      AUTO_SCAN_ENABLED: ${AUTO_SCAN_ENABLED:-true}
+      AUTO_SCAN_INTERVAL_SEC: ${AUTO_SCAN_INTERVAL_SEC:-3600}
+      AUTO_SCAN_MODE: ${AUTO_SCAN_MODE:-replay}
+      AUTO_SCAN_TIMEFRAME: ${AUTO_SCAN_TIMEFRAME:-1h}
+      AUTO_SCAN_PERIOD: ${AUTO_SCAN_PERIOD:-5d}
+      AUTO_SCAN_ON_START: ${AUTO_SCAN_ON_START:-false}
+      EXECUTE_ENABLED: ${EXECUTE_ENABLED:-false}
+      EXEC_KILL_SWITCH: ${EXEC_KILL_SWITCH:-false}
+      # Optional secrets (create .env from backend/config.example.env)
+      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN:-}
+      TELEGRAM_CHAT_ID: ${TELEGRAM_CHAT_ID:-}
+      OANDA_API_KEY: ${OANDA_API_KEY:-}
+      OANDA_ACCOUNT_ID: ${OANDA_ACCOUNT_ID:-}
+      OANDA_ENV: ${OANDA_ENV:-practice}
+    volumes:
+      # Persist signal log, orders, candle cache, ML meta across restarts
+      - mayi-data:/app/data/store
+      - mayi-logs:/app/delivery/logs
+      - mayi-orders:/app/execution/logs
+      - mayi-ml:/app/engine/ml
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://127.0.0.1:8000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 45s
+    logging:
+      driver: json-file
+      options:
+        max-size: "20m"
+        max-file: "5"
+
+volumes:
+  mayi-data:
+  mayi-logs:
+  mayi-orders:
+  mayi-ml:

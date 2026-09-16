@@ -1,0 +1,6 @@
+pair,timeframe,n_bars,n_trades,n_closed,wins,losses,pending,win_rate_pct,avg_win_r,avg_loss_r,expectancy_r,total_r,config
+EURUSD=X,1h,180,60,58,30,28,2,51.7,1.5,-1.0,0.293,17.0,"{'threshold': 40.0, 'atr_sl_mult': 1.5, 'rr': 1.5, 'max_bars': 48, 'counter_trend_policy': 'ignore_short', 'sr_tol_frac': 0.0012, 'tweezer_tol_rel': 0.0008, 'round_increment': 0.005}"
+GBPUSD=X,1h,180,52,46,21,25,6,45.7,1.5,-1.0,0.141,6.5,"{'threshold': 40.0, 'atr_sl_mult': 1.5, 'rr': 1.5, 'max_bars': 48, 'counter_trend_policy': 'ignore_short', 'sr_tol_frac': 0.0012, 'tweezer_tol_rel': 0.0008, 'round_increment': 0.005}"
+USDJPY=X,1h,180,82,80,35,45,2,43.8,1.5,-1.0,0.094,7.5,"{'threshold': 40.0, 'atr_sl_mult': 1.5, 'rr': 1.5, 'max_bars': 48, 'counter_trend_policy': 'ignore_short', 'sr_tol_frac': 0.0012, 'tweezer_tol_rel': 0.0007, 'round_increment': 0.5}"
+GBPJPY=X,1h,180,74,72,41,31,2,56.9,1.5,-1.0,0.424,30.5,"{'threshold': 40.0, 'atr_sl_mult': 1.5, 'rr': 1.5, 'max_bars': 48, 'counter_trend_policy': 'ignore_short', 'sr_tol_frac': 0.0012, 'tweezer_tol_rel': 0.0007, 'round_increment': 0.5}"
+^DJI,1h,180,86,83,41,42,3,49.4,1.5,-1.0,0.235,19.5,"{'threshold': 40.0, 'atr_sl_mult': 1.5, 'rr': 1.5, 'max_bars': 48, 'counter_trend_policy': 'ignore_short', 'sr_tol_frac': 0.0012, 'tweezer_tol_rel': 0.0003, 'round_increment': 100.0}"
