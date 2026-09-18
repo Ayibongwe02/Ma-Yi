@@ -1,0 +1,15 @@
+{
+  "pair": "GBPUSD=X",
+  "timeframe": "1h",
+  "n_trades": 98,
+  "n_sims": 2000,
+  "risk_per_trade": 0.01,
+  "starting_equity": 10000.0,
+  "median_terminal_equity": 9165.57,
+  "p05_terminal_equity": 7507.8,
+  "p95_terminal_equity": 11189.39,
+  "median_max_drawdown_pct": 15.6,
+  "p95_max_drawdown_pct": 27.9,
+  "ruin_rate_pct": 0.0,
+  "mean_trade_r": -0.082
+}

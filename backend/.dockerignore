@@ -1,0 +1,75 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+.venv/
+env/
+ENV/
+*.egg-info/
+.eggs/
+dist/
+build/
+*.egg
+.installed.cfg
+
+# Node / frontend build artefacts (we rebuild inside the image)
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# IDE / OS
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Secrets — never bake into the image
+.env
+.env.*
+!.env.example
+config.env
+*.pem
+*.key
+
+# Test / coverage
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+.tox/
+.nox/
+coverage.xml
+*.cover
+
+# Streamlit / local caches
+.streamlit/
+.cache/
+
+# Large / generated data that should be mounted at runtime
+# (keep sample CSVs if small; exclude bulky regenerable reports if desired)
+# backtest/reports/*.csv
+# delivery/logs/*
+# execution/logs/*
+
+# Docs that are not needed at runtime (keep README for operators)
+HANDOVER_*.md
+CHANGELOG_HANDOVER.md
+engine/STAGE*_DELIVERABLE.md
+*.md.bak
+
+# Docker itself
+Dockerfile*
+docker-compose*.yml
+.dockerignore

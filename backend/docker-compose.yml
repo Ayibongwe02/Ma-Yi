@@ -1,0 +1,82 @@
+# Ma-yi Sentinel — Docker Compose
+# Build & run from this directory (backend/):
+#   docker compose up --build
+# Open http://localhost:8000
+
+services:
+  mayi:
+    image: mayi-sentinel:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${PORT:-8000}:8000"
+    environment:
+      - PORT=8000
+      - DATA_SOURCE=${DATA_SOURCE:-yfinance}
+      - PAIRS=${PAIRS:-EURUSD=X,GBPUSD=X,USDJPY=X,GBPJPY=X,^DJI}
+      - TIMEFRAMES=${TIMEFRAMES:-1h,4h}
+      - RUNNER_MODE=${RUNNER_MODE:-replay}
+      - AUTO_SCAN_ON_START=${AUTO_SCAN_ON_START:-false}
+      - AUTO_SCAN_ENABLED=${AUTO_SCAN_ENABLED:-true}
+      - AUTO_SCAN_INTERVAL_SEC=${AUTO_SCAN_INTERVAL_SEC:-3600}
+      - AUTO_SCAN_MODE=${AUTO_SCAN_MODE:-replay}
+      - AUTO_SCAN_TIMEFRAME=${AUTO_SCAN_TIMEFRAME:-1h}
+      - AUTO_SCAN_PERIOD=${AUTO_SCAN_PERIOD:-5d}
+      - AUTO_SCAN_PAIR=${AUTO_SCAN_PAIR:-}
+      - EXECUTE_ENABLED=${EXECUTE_ENABLED:-false}
+      - EXEC_KILL_SWITCH=${EXEC_KILL_SWITCH:-false}
+      - RISK_PER_TRADE=${RISK_PER_TRADE:-0.01}
+      - MAX_UNITS=${MAX_UNITS:-1000}
+      - EXEC_MIN_SCORE=${EXEC_MIN_SCORE:-50}
+      - MAX_OPEN_POSITIONS=${MAX_OPEN_POSITIONS:-2}
+      - MAX_DAILY_TRADES=${MAX_DAILY_TRADES:-5}
+      - DEFAULT_EQUITY=${DEFAULT_EQUITY:-10000}
+      - OANDA_ENV=${OANDA_ENV:-practice}
+      - SENTIMENT_WEIGHT=${SENTIMENT_WEIGHT:-0.2}
+      - COT_WEIGHT=${COT_WEIGHT:-0.15}
+      - COT_DIVERGENCE_BONUS=${COT_DIVERGENCE_BONUS:-0.2}
+      - ML_AUTO_RETRAIN=${ML_AUTO_RETRAIN:-true}
+      - ML_MIN_SAMPLES=${ML_MIN_SAMPLES:-8}
+      - ML_MIN_NEW_LABELS=${ML_MIN_NEW_LABELS:-2}
+      - ML_RETRAIN_COOLDOWN_SEC=${ML_RETRAIN_COOLDOWN_SEC:-60}
+      - ML_RETRAIN_INTERVAL_SEC=${ML_RETRAIN_INTERVAL_SEC:-300}
+      - ML_BOOTSTRAP_FLOOR=${ML_BOOTSTRAP_FLOOR:-40}
+      - ML_BOOTSTRAP_MAX_RATIO=${ML_BOOTSTRAP_MAX_RATIO:-1.0}
+      - ML_OVERFIT_GAP=${ML_OVERFIT_GAP:-0.22}
+      - ML_LIVE_LABEL_WEIGHT=${ML_LIVE_LABEL_WEIGHT:-3.0}
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN:-}
+      - TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID:-}
+      - OANDA_API_KEY=${OANDA_API_KEY:-}
+      - OANDA_ACCOUNT_ID=${OANDA_ACCOUNT_ID:-}
+    volumes:
+      - ./delivery/logs:/app/delivery/logs
+      - ./execution/logs:/app/execution/logs
+      - ./backtest/reports:/app/backtest/reports
+      - ./data/store:/app/data/store
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:8000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 25s
+
+  streamlit:
+    profiles: ["streamlit"]
+    image: mayi-sentinel:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["./start.sh"]
+    ports:
+      - "8501:8501"
+    environment:
+      - PORT=8501
+      - DATA_SOURCE=yfinance
+      - PAIRS=EURUSD=X,GBPUSD=X
+      - RUNNER_MODE=replay
+    volumes:
+      - ./delivery/logs:/app/delivery/logs
+      - ./execution/logs:/app/execution/logs
+    restart: unless-stopped

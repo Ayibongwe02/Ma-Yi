@@ -1,0 +1,27 @@
+# Ma-yi Live Command — Python dependencies
+# Install: pip install -r requirements.txt
+
+# API
+fastapi>=0.115.0
+uvicorn[standard]>=0.32.0
+pydantic>=2.0
+python-multipart>=0.0.9
+
+# Data & ML
+pandas>=2.0
+numpy>=1.26
+# Pinned, not floating: a joblib pickle is only valid under the scikit-learn
+# version that wrote it, and sklearn warns rather than errors when they differ.
+# Must stay in sync with requirements-frozen.txt. The learner now records the
+# version in meta.json and discards the model on mismatch, so a bump here just
+# means the model retrains on first boot rather than silently misbehaving.
+scikit-learn==1.6.1
+joblib==1.4.2
+yfinance>=0.2.40
+
+# HTTP / config
+requests>=2.31
+python-dotenv>=1.0
+
+# Optional legacy UI
+streamlit>=1.28

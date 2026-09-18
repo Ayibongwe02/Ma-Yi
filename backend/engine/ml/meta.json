@@ -1,0 +1,151 @@
+{
+  "feature_version": 2,
+  "sklearn_version": "1.6.1",
+  "n_train": 442,
+  "n_pos": 227,
+  "n_neg": 215,
+  "last_fit": "2026-09-17T18:59:15.434904+00:00",
+  "train_accuracy": 0.725,
+  "feature_importance": {
+    "abs_score": 0.1297,
+    "raw_score": 0.2282,
+    "direction": 0.0,
+    "trend": 0.0042,
+    "sr_score": 0.316,
+    "vol_spike": 0.0,
+    "vol_quiet": 0.0,
+    "vol_normal": 0.002,
+    "rr": 0.0,
+    "hour": 0.1123,
+    "day_of_week": 0.1924,
+    "is_major": 0.0038,
+    "sentiment_score": 0.0,
+    "regime_with_trend": 0.0,
+    "regime_counter_early": 0.0,
+    "regime_counter_ignored": 0.0,
+    "regime_no_trend": 0.0113,
+    "pattern_id": 0.0
+  },
+  "pattern_hit_rates": {
+    "doji": {
+      "n": 57,
+      "wins": 14,
+      "win_rate": 24.6
+    },
+    "shooting_star": {
+      "n": 20,
+      "wins": 11,
+      "win_rate": 55.0
+    },
+    "tweezer": {
+      "n": 117,
+      "wins": 53,
+      "win_rate": 45.3
+    },
+    "engulfing": {
+      "n": 87,
+      "wins": 52,
+      "win_rate": 59.8
+    },
+    "three_soldiers_crows": {
+      "n": 74,
+      "wins": 50,
+      "win_rate": 67.6
+    },
+    "star": {
+      "n": 36,
+      "wins": 17,
+      "win_rate": 47.2
+    },
+    "hammer": {
+      "n": 19,
+      "wins": 11,
+      "win_rate": 57.9
+    },
+    "marubozu": {
+      "n": 32,
+      "wins": 19,
+      "win_rate": 59.4
+    }
+  },
+  "regime_hit_rates": {
+    "with_long_trend": {
+      "n": 346,
+      "wins": 182,
+      "win_rate": 52.6
+    },
+    "no_long_trend": {
+      "n": 56,
+      "wins": 29,
+      "win_rate": 51.8
+    },
+    "counter_trend_ignored": {
+      "n": 40,
+      "wins": 16,
+      "win_rate": 40.0
+    }
+  },
+  "walk_forward": {
+    "available": true,
+    "n_folds": 4,
+    "n_tested": 352,
+    "accuracy": 0.577,
+    "brier_score": 0.255,
+    "auc": 0.582,
+    "folds": [
+      {
+        "fold": 1,
+        "n_train": 90,
+        "n_test": 88,
+        "accuracy": 0.591
+      },
+      {
+        "fold": 2,
+        "n_train": 178,
+        "n_test": 88,
+        "accuracy": 0.455
+      },
+      {
+        "fold": 3,
+        "n_train": 266,
+        "n_test": 88,
+        "accuracy": 0.625
+      },
+      {
+        "fold": 4,
+        "n_train": 354,
+        "n_test": 88,
+        "accuracy": 0.636
+      }
+    ]
+  },
+  "health_state": "healthy",
+  "health_detail": {
+    "state": "healthy",
+    "previous_state": "insufficient_data",
+    "action": "continue",
+    "recommendation": "Model looks balanced \u2014 keep normal auto-retrain cadence.",
+    "reasons": [],
+    "metrics": {
+      "labeled": 442,
+      "train_accuracy": 0.725,
+      "walk_forward_accuracy": 0.577,
+      "gap": 0.148,
+      "diverse_patterns": 8,
+      "hours_since_fit": 0.0,
+      "n_wins": 227,
+      "n_losses": 215
+    },
+    "controls": {
+      "learning_paused": false,
+      "explore_mode": false,
+      "hyper_mode": "normal"
+    },
+    "evaluated_at": "2026-09-17T18:59:15.447688+00:00"
+  },
+  "learning_paused": false,
+  "explore_mode": false,
+  "hyper_mode": "normal",
+  "n_at_last_fit": 442,
+  "last_auto_fit": "2026-09-17T18:59:15.453119+00:00"
+}
